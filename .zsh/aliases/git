@@ -1,0 +1,6 @@
+alias gd='git diff'
+alias gs='git status'
+function gcamp() {
+  git commit -am "$*"
+  git push
+}

@@ -1,0 +1,4 @@
+function otptool() {
+ oathtool -b --totp $*
+}
+
