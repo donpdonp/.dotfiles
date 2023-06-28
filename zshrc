@@ -1,4 +1,4 @@
-export PATH=$PATH:/opt/bin/:~/go/bin:~/.local/bin
+export PATH=$PATH:/opt/bin:~/go/bin:~/.local/bin
 export HISTSIZE=5000
 
 for cfgfile (~/.dotfiles/zsh/**/*(.) ~/.zsh/**/*(.)) source $cfgfile
