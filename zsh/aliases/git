@@ -3,3 +3,5 @@ alias gs='git status'
 function gcamp() {
   git commit -am "$*" && git push
 }
+
+alias lz='lazygit'
