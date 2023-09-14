@@ -1,0 +1,26 @@
+theme = "greenscreen"
+
+[editor]
+#line-number = "relative"
+
+[editor.statusline]
+left = ["spinner", "file-name", "version-control",  "mode"]
+right = ["diagnostics", "position", "file-encoding", "file-type"]
+mode.normal = ""
+
+[keys.normal]
+'0' = "goto_line_start"
+'`' = "goto_line_start"
+'$' = "goto_line_end"
+#'x' = "delete_selection"
+#'q' = 'extend_line'
+Z = { Q = ":quit!", Z = ":x" }
+#"C-s" = ["save_selection", ":w"]
+#"C-q" = ":q"
+
+[editor.cursor-shape]
+insert = "underline"
+
+[editor.lsp]
+display-inlay-hints = true
+
