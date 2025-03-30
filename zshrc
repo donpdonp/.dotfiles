@@ -1,5 +1,6 @@
-export PATH=$PATH:/opt/bin:~/go/bin:~/.local/bin
+export PATH=$PATH:/opt/bin:~/go/bin:~/.local/bin:~/.raku/bin
 export HISTSIZE=5000
+export LS_COLORS='di=01;93' # yellow directories
 
 for cfgfile (~/.dotfiles/zsh/**/*(.) ~/.zsh/**/*(.)) source $cfgfile
 
@@ -12,4 +13,4 @@ prompt () {
 
 precmd_functions+=(prompt)
 
-
+#eval "$(tv init zsh)"

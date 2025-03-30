@@ -1,4 +1,4 @@
 alias ls='ls --color --quoting-style=literal --classify'
-alias l='ls -l'
-alias ltr='ls -ltr'
+alias l='ls --human -l'
+alias ltr='ls --human -ltr'
 
