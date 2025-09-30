@@ -1,6 +1,9 @@
 export PATH=$PATH:/opt/bin:~/go/bin:~/.local/bin:~/.raku/bin
+export LIBPROC_HIDE_KERNEL=1
 export HISTSIZE=5000
 export LS_COLORS='di=01;93' # yellow directories
+
+setopt HIST_IGNORE_SPACE
 
 for cfgfile (~/.dotfiles/zsh/**/*(.) ~/.zsh/**/*(.)) source $cfgfile
 
