@@ -1,0 +1,10 @@
+alias jjd='jj diff'
+alias jjs='jj status'
+alias jjz='lazyjj'
+alias jjm='jj describe -m'
+alias jjc='jj commit --interactive'
+
+function jjdn() {
+  jj describe -m $1
+  jj new
+}

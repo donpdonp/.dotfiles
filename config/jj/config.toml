@@ -1,0 +1,72 @@
+[user]
+name = "Don Park"
+email = "donp@donp.org"
+
+[ui]
+default-command = ["log", "-T", "log_with_files", "--limit", "7"]
+#default-command = ["status"]
+diff-formatter = ["difft", "--color=always", "$left", "$right"]
+
+[revsets]
+log = "(trunk()..@):: | (trunk()..@)-"
+
+[templates]
+git_push_bookmark = '"jj-" ++ change_id.short()'
+
+[remotes.origin]
+auto-track-bookmarks = "glob:*"
+
+[aliases]
+init = ["git", "init"]
+
+#broken
+# different diffs
+#[[--scope]]
+#--when.commands = ["diff", "show"]
+#[--scope.ui]
+#pager = "difft"
+#diff-formatter = ":git"
+
+[revset-aliases]
+'recent_work' = 'ancestors(visible_heads(), 3) & mutable()'
+"immutable_heads()" = "present(trunk()) | tags()"
+
+
+[template-aliases]
+
+'format_short_commit_header(commit)' = '''
+separate(' ',
+  format_short_change_id_with_change_offset(commit),
+  format_short_commit_id(commit.commit_id()),
+  commit.author().email(),
+  format_timestamp(commit.author().timestamp()),
+  commit.bookmarks(),
+  commit.tags(),
+  if(self.contained_in("first_parent(@)"), label('tags', "git_head")) ,
+  commit.working_copies(),
+  if(commit.conflict(), label('conflict', 'conflict')),
+  if(config('ui.show-cryptographic-signatures').as_boolean(),
+    format_short_cryptographic_signature(commit.signature())
+  ),
+)
+'''
+
+log_with_files = '''
+if(root,
+  format_root_commit(self),
+  label(if(current_working_copy, "working_copy"),
+    concat(
+      format_short_commit_header(self)++ "\n",
+      separate(" ",
+        if(empty, label("empty", "(empty)")),
+        if(description,
+          description.first_line(),
+          label(if(empty, "empty"), description_placeholder),
+        ),
+      ) ++ "\n",
+      if(self.contained_in("recent_work"), diff.summary()),
+    ),
+  )
+)
+'''
+
