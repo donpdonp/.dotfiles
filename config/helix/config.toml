@@ -4,7 +4,7 @@ theme = "greenscreen"
 #line-number = "relative"
 
 [editor.statusline]
-left = ["spinner", "file-name", "version-control",  "mode"]
+left = ["spinner", "file-name", "file-modification-indicator", "version-control",  "mode"]
 right = ["diagnostics", "position", "file-encoding", "file-type"]
 mode.normal = ""
 
