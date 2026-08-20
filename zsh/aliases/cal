@@ -1,1 +1,11 @@
-alias cal='ncal -b'
+cal() {
+  calpath=$(whence -p cal)
+  ncalpath=$(whence -p ncal)
+  if [[ -f $ncalpath ]]; then 
+    cal=$ncalpath
+  else
+    cal=$calpath
+  fi
+
+  $cal $@
+}
